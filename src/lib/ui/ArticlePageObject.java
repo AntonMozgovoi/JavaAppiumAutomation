@@ -1,21 +1,20 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class ArticlePageObject extends MainPageObject
 {
     private static final String
-        TITLE = "org.wikipedia:id/view_page_title_text",
-        FOOTER_ELEMENT = "//*[@text = 'View article in browser']",
-        SAVE_ARTICLE_BUTTON = "org.wikipedia:id/page_save",
-        ADD_TO_LIST_BUTTON = "org.wikipedia:id/snackbar_action",
-        OK_BUTTON = "//*[@text='OK']",
-        MY_LIST_NAME_INPUT = "//*[contains(@text,'Name of this list')]",
-        NAVIGATE_BUTTON = "//*[@content-desc = 'Navigate up']",
-        CLOSE_WIKIPEDIA_GAMES = "org.wikipedia:id/closeButton",
-        TITLE_CONTENT = "//*[@content-desc='Java (programming language)']";
+        TITLE = "id:org.wikipedia:id/view_page_title_text",
+        FOOTER_ELEMENT = "xpath://*[@text = 'View article in browser']",
+        SAVE_ARTICLE_BUTTON = "id:org.wikipedia:id/page_save",
+        ADD_TO_LIST_BUTTON = "id:org.wikipedia:id/snackbar_action",
+        OK_BUTTON = "xpath://*[@text='OK']",
+        MY_LIST_NAME_INPUT = "xpath://*[contains(@text,'Name of this list')]",
+        NAVIGATE_BUTTON = "xpath://*[@content-desc = 'Navigate up']",
+        CLOSE_WIKIPEDIA_GAMES = "id:org.wikipedia:id/closeButton",
+        TITLE_CONTENT = "xpath://*[@content-desc='Java (programming language)']";
 
     public ArticlePageObject(AppiumDriver driver)
     {
@@ -24,13 +23,13 @@ public class ArticlePageObject extends MainPageObject
 
     public void clickCloseButton()
     {
-        this.waitForElementAndClick(By.id(CLOSE_WIKIPEDIA_GAMES), "Cannot find close button",5);
+        this.waitForElementAndClick(CLOSE_WIKIPEDIA_GAMES, "Cannot find close button",5);
     }
 
 
     public WebElement waitForTitleElement()
     {
-        return this.waitForElementPresent(By.id(TITLE), "Cannot find article title on page", 15);
+        return this.waitForElementPresent(TITLE, "Cannot find article title on page", 15);
     }
 
 
@@ -44,7 +43,7 @@ public class ArticlePageObject extends MainPageObject
     public void swipeToFooter()
     {
         this.swipeUpToFindElement(
-                By.xpath(FOOTER_ELEMENT),
+                FOOTER_ELEMENT,
                 "Cannot find the end of the article",
                 20
         );
@@ -53,26 +52,26 @@ public class ArticlePageObject extends MainPageObject
     public void addArticleToMyList(String name_of_folder)
     {
         this.waitForElementAndClick(
-                By.id(SAVE_ARTICLE_BUTTON),
+                SAVE_ARTICLE_BUTTON,
                 "Cannot save article",
                 5
         );
 
         this.waitForElementAndClick(
-                By.id(ADD_TO_LIST_BUTTON),
+                ADD_TO_LIST_BUTTON,
                 "Cannot add to list",
                 5
         );
 
         this.waitForElementAndSendKeys(
-                By.xpath(MY_LIST_NAME_INPUT),
+                MY_LIST_NAME_INPUT,
                 name_of_folder,
                 "Cannot find field 'Name of this list'",
                 5
 
         );
         this.waitForElementAndClick(
-                By.xpath(OK_BUTTON),
+                OK_BUTTON,
                 "Cannot find button 'OK'",
                 5
         );
@@ -81,7 +80,7 @@ public class ArticlePageObject extends MainPageObject
     public void closeArticle()
     {
         this.waitForElementAndClick(
-                By.xpath(NAVIGATE_BUTTON),
+                NAVIGATE_BUTTON,
                 "Cannot find 'Navigate up'",
                 5
         );
@@ -89,6 +88,6 @@ public class ArticlePageObject extends MainPageObject
 
     public void getHeaderOfArticle()
     {
-        this.waitForElementPresent(By.xpath(TITLE_CONTENT), "Cannot find article title on page", 15);
+        this.waitForElementPresent(TITLE_CONTENT, "Cannot find article title on page", 15);
     }
 }
