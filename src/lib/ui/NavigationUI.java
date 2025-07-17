@@ -3,10 +3,10 @@ package lib.ui;
 import io.appium.java_client.AppiumDriver;
 
 
-public class NavigationUI extends MainPageObject{
+abstract public class NavigationUI extends MainPageObject{
 
-    private static final String
-            MY_LIST_LINK = "id:org.wikipedia:id/nav_tab_reading_lists";
+    protected static String
+            MY_LIST_LINK;
     public NavigationUI(AppiumDriver driver)
     {
         super(driver);
@@ -19,6 +19,7 @@ public class NavigationUI extends MainPageObject{
                 "Cannot open Saved List",
                 5
         );
+        this.swipeUp(2000);
     }
 
 }

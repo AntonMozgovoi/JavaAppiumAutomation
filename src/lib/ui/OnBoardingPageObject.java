@@ -4,14 +4,14 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class OnBoardingPageObject extends MainPageObject
+abstract public class OnBoardingPageObject extends MainPageObject
 {
-    public static final String
-        SECOND_SCREEN = "xpath://*[@text='New ways to explore']",
-        THIRD_SCREEN = "xpath://*[@text='Reading lists with sync']",
-        FOURTH_SCREEN = "xpath://*[@text='Data & Privacy']",
-        ONBOARDING_DONE_BUTTON = "id:org.wikipedia:id/fragment_onboarding_done_button",
-        WOODMARCK = "id:org.wikipedia:id/main_toolbar_wordmark";
+    protected static String
+        SECOND_SCREEN,
+        THIRD_SCREEN,
+        FOURTH_SCREEN,
+        ONBOARDING_DONE_BUTTON,
+        WOODMARCK;
 
     public OnBoardingPageObject (AppiumDriver driver)
     {

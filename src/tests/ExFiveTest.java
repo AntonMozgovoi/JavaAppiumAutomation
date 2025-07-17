@@ -1,6 +1,7 @@
 package tests;
 import lib.CoreTestCase;
 import lib.ui.OnBoardingPageObject;
+import lib.ui.factories.OnBoardingPageObjectFactory;
 import org.junit.Test;
 
 public class ExFiveTest extends CoreTestCase {
@@ -9,7 +10,7 @@ public class ExFiveTest extends CoreTestCase {
     public void testSwipeOnBoarding()
     {
 
-        OnBoardingPageObject OnBoardingPageObject = new OnBoardingPageObject(driver);
+        OnBoardingPageObject OnBoardingPageObject = OnBoardingPageObjectFactory.get(driver);
         OnBoardingPageObject.swipeToSecondScreen();
         String text_second_page = OnBoardingPageObject.GetTextFromSecondPage();
         assertEquals(
